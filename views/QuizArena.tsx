@@ -50,13 +50,13 @@ export const QuizArena = ({ onScore }: { onScore: (xp: number) => void }) => {
   if (!selectedTopic) {
     return (
       <div className="max-w-2xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-8 text-purple-700">Elige tu Aventura</h2>
+        <h2 className="text-3xl font-bold text-center mb-8 text-white drop-shadow-md">Elige tu Aventura</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {Object.values(Topic).map((t) => (
             <button
               key={t}
               onClick={() => startGame(t)}
-              className="bg-white border-b-4 border-slate-200 active:border-b-0 active:translate-y-1 hover:bg-purple-50 p-6 rounded-2xl text-lg font-bold text-slate-700 shadow-sm transition-all"
+              className="bg-blue-900 border-b-4 border-blue-950 active:border-b-0 active:translate-y-1 hover:bg-blue-800 p-6 rounded-2xl text-lg font-bold text-white shadow-lg transition-all"
             >
               {t}
             </button>
@@ -69,21 +69,21 @@ export const QuizArena = ({ onScore }: { onScore: (xp: number) => void }) => {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center h-64 space-y-4">
-        <div className="w-16 h-16 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
-        <p className="text-lg font-medium text-purple-600 animate-pulse">Generando desafío con IA...</p>
+        <div className="w-16 h-16 border-4 border-blue-800 border-t-yellow-400 rounded-full animate-spin"></div>
+        <p className="text-lg font-medium text-blue-200 animate-pulse">Generando desafío con IA...</p>
       </div>
     );
   }
 
   if (showResult) {
     return (
-      <div className="bg-white rounded-3xl p-8 shadow-xl text-center max-w-md mx-auto">
+      <div className="bg-white rounded-3xl p-8 shadow-2xl text-center max-w-md mx-auto border-4 border-purple-500">
         <div className="text-6xl mb-4">🏆</div>
         <h2 className="text-3xl font-black text-slate-800 mb-2">¡Juego Terminado!</h2>
         <p className="text-xl text-slate-600 mb-6">Puntuación: {score} / {questions.length}</p>
         <button 
           onClick={() => setSelectedTopic(null)}
-          className="w-full bg-purple-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-purple-700 transition-colors"
+          className="w-full bg-purple-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-purple-700 transition-colors shadow-lg"
         >
           Jugar de nuevo
         </button>
@@ -92,14 +92,14 @@ export const QuizArena = ({ onScore }: { onScore: (xp: number) => void }) => {
   }
 
   const currentQ = questions[currentIndex];
-  if (!currentQ) return <div>Error al cargar.</div>;
+  if (!currentQ) return <div className="text-white text-center">Error al cargar.</div>;
 
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="bg-white rounded-3xl shadow-lg overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-blue-800">
         {/* Progress */}
-        <div className="bg-slate-100 h-2 w-full">
-          <div className="bg-purple-500 h-full transition-all duration-500" style={{width: `${((currentIndex + 1) / questions.length) * 100}%`}}></div>
+        <div className="bg-slate-200 h-3 w-full">
+          <div className="bg-gradient-to-r from-purple-500 to-indigo-600 h-full transition-all duration-500" style={{width: `${((currentIndex + 1) / questions.length) * 100}%`}}></div>
         </div>
 
         <div className="p-8">
@@ -119,10 +119,10 @@ export const QuizArena = ({ onScore }: { onScore: (xp: number) => void }) => {
                 key={idx}
                 onClick={() => handleAnswer(opt)}
                 disabled={!!selectedAnswer}
-                className={`w-full p-4 rounded-xl text-left font-semibold text-lg transition-all border-2
+                className={`w-full p-4 rounded-xl text-left font-semibold text-lg transition-all border-b-4 active:border-b-0 active:translate-y-1
                   ${selectedAnswer === opt 
                     ? (opt === currentQ.correctAnswer ? 'bg-green-100 border-green-500 text-green-800' : 'bg-red-100 border-red-500 text-red-800')
-                    : 'bg-slate-50 border-transparent hover:bg-slate-100 hover:border-purple-200'
+                    : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-indigo-50 hover:border-indigo-200'
                   }
                   ${!!selectedAnswer && opt === currentQ.correctAnswer ? 'bg-green-100 border-green-500 text-green-800' : ''}
                 `}

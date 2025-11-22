@@ -1,4 +1,4 @@
-import { GoogleGenAI, Type, LiveServerMessage, Modality, Blob } from "@google/genai";
+import { GoogleGenAI, Type, LiveServerMessage, Modality } from "@google/genai";
 import { Topic, QuizQuestion } from "../types";
 import { arrayBufferToBase64 } from "./audioUtils";
 

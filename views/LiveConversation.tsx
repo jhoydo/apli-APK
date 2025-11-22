@@ -6,8 +6,6 @@ import { decodeAudioData, arrayBufferToBase64, base64ToUint8Array } from '../ser
 export const LiveConversation = () => {
   const [connected, setConnected] = useState(false);
   const [status, setStatus] = useState('Listo para hablar');
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   
   // Audio Contexts
   const inputCtxRef = useRef<AudioContext | null>(null);
@@ -138,29 +136,29 @@ export const LiveConversation = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full p-4 space-y-8">
        <div className="text-center space-y-2">
-          <h2 className="text-3xl font-black text-green-600">Sala de Conversación</h2>
-          <p className="text-slate-500 text-lg">Practica hablando con la IA más rápida</p>
+          <h2 className="text-3xl font-black text-green-400 drop-shadow-md">Sala de Conversación</h2>
+          <p className="text-blue-200 text-lg">Practica hablando con la IA más rápida</p>
        </div>
 
-       <div className={`w-64 h-64 rounded-full flex items-center justify-center transition-all duration-500 ${connected ? 'bg-green-100 shadow-[0_0_60px_rgba(74,222,128,0.4)] scale-110' : 'bg-slate-100'}`}>
-          <div className={`text-8xl transition-transform ${connected ? 'animate-bounce' : ''}`}>
+       <div className={`w-64 h-64 rounded-full flex items-center justify-center transition-all duration-500 ${connected ? 'bg-green-100 shadow-[0_0_60px_rgba(74,222,128,0.4)] scale-110' : 'bg-blue-900 shadow-2xl'}`}>
+          <div className={`text-8xl transition-transform ${connected ? 'animate-bounce' : 'grayscale opacity-50'}`}>
              {connected ? '🎙️' : '🔇'}
           </div>
        </div>
 
-       <div className="text-xl font-bold text-slate-600 animate-pulse">
+       <div className="text-xl font-bold text-white animate-pulse">
          {status}
        </div>
 
        <button
          onClick={connected ? stopSession : startSession}
-         className={`px-8 py-4 rounded-2xl text-xl font-bold text-white shadow-lg transition-all active:scale-95 ${connected ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'}`}
+         className={`px-8 py-4 rounded-2xl text-xl font-bold text-white shadow-xl transition-all active:scale-95 border-b-4 active:border-b-0 active:translate-y-1 ${connected ? 'bg-red-500 hover:bg-red-600 border-red-700' : 'bg-green-500 hover:bg-green-600 border-green-700'}`}
        >
          {connected ? 'Colgar Llamada' : 'Comenzar Llamada'}
        </button>
 
-       <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-xl max-w-md text-sm text-yellow-800">
-         <span className="font-bold">Tip:</span> Usa audífonos para la mejor experiencia. Habla claro y pregunta sobre el mundo.
+       <div className="bg-blue-900/50 border border-blue-700 p-4 rounded-xl max-w-md text-sm text-blue-200 text-center backdrop-blur-sm">
+         <span className="font-bold text-yellow-400">Tip:</span> Usa audífonos para la mejor experiencia. Habla claro y pregunta sobre el mundo.
        </div>
     </div>
   );

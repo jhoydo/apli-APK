@@ -50,17 +50,17 @@ export const ArtStudio = () => {
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header & Mode Toggle */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-        <h2 className="text-3xl font-black text-pink-600">Estudio de Arte Mágico 🎨</h2>
-        <div className="bg-white p-1 rounded-xl shadow-sm inline-flex">
+        <h2 className="text-3xl font-black text-pink-400 drop-shadow-md">Estudio de Arte Mágico 🎨</h2>
+        <div className="bg-blue-900 p-1 rounded-xl shadow-lg inline-flex border border-blue-800">
           <button 
             onClick={() => setMode('GENERATE')}
-            className={`px-4 py-2 rounded-lg font-bold text-sm transition ${mode === 'GENERATE' ? 'bg-pink-500 text-white' : 'text-slate-500 hover:bg-slate-50'}`}
+            className={`px-4 py-2 rounded-lg font-bold text-sm transition ${mode === 'GENERATE' ? 'bg-pink-500 text-white shadow-md' : 'text-blue-300 hover:bg-blue-800'}`}
           >
             ✨ Crear Nuevo
           </button>
           <button 
             onClick={() => setMode('EDIT')}
-            className={`px-4 py-2 rounded-lg font-bold text-sm transition ${mode === 'EDIT' ? 'bg-pink-500 text-white' : 'text-slate-500 hover:bg-slate-50'}`}
+            className={`px-4 py-2 rounded-lg font-bold text-sm transition ${mode === 'EDIT' ? 'bg-pink-500 text-white shadow-md' : 'text-blue-300 hover:bg-blue-800'}`}
           >
             🪄 Editar Imagen
           </button>
@@ -70,7 +70,7 @@ export const ArtStudio = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Controls Panel */}
         <div className="lg:col-span-1 space-y-4">
-          <div className="bg-white p-6 rounded-3xl shadow-md space-y-4">
+          <div className="bg-white p-6 rounded-3xl shadow-lg border-4 border-blue-900 space-y-4 text-slate-800">
             {mode === 'GENERATE' && (
               <>
                 <div>
@@ -141,7 +141,7 @@ export const ArtStudio = () => {
 
         {/* Canvas / Result Area */}
         <div className="lg:col-span-2">
-          <div className="bg-slate-800 rounded-3xl h-[500px] flex items-center justify-center overflow-hidden shadow-inner relative group">
+          <div className="bg-slate-900 rounded-3xl h-[500px] flex items-center justify-center overflow-hidden shadow-2xl border-4 border-blue-900 relative group">
             {image ? (
               <>
                  <img src={image} alt="Generated art" className="w-full h-full object-contain" />
