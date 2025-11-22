@@ -1,0 +1,8 @@
+{
+  "name": "APRENDOM",
+  "description": "Una plataforma educativa gamificada para niños de 5 a 15 años. Aprende historia, geografía, ciencia y más con la ayuda de Inteligencia Artificial avanzada.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}
